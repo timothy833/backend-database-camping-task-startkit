@@ -314,7 +314,7 @@ select
 	used_credits.user_id,
 	(credit_totals.total_credit - used_credits.used_credit) as remaining_credit
 from (
-	-- 子查詢 1：計算總點數
+	-- 子查詢 1：計算總堂數
 	select 
 		"CREDIT_PURCHASE".user_id,
 		sum("CREDIT_PURCHASE".purchased_credits) as total_credit
@@ -323,7 +323,7 @@ from (
 	group by "CREDIT_PURCHASE".user_id
 ) as credit_totals
 inner join (
-	-- 子查詢 2：計算已用點數
+	-- 子查詢 2：計算已用堂數
 	select 
 		"COURSE_BOOKING".user_id,
 		count(*) as used_credit
