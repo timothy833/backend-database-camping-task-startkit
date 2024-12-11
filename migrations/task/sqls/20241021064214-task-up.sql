@@ -64,6 +64,10 @@
     -- 1. 名稱為 `7 堂組合包方案`，價格為`1,400` 元，堂數為`7`
     -- 2. 名稱為`14 堂組合包方案`，價格為`2,520` 元，堂數為`14`
     -- 3. 名稱為 `21 堂組合包方案`，價格為`4,800` 元，堂數為`21`
+insert into "CREDIT_PACKAGE" (name, credit_amount, price) values
+   ('7 堂組合包方案', 7, 1400),
+   ('14 堂組合包方案', 14, 2520),
+   ('21 堂組合包方案', 21, 4800);
 
 
 
@@ -71,6 +75,32 @@
     -- 1. `王小明` 購買 `14 堂組合包方案`
     -- 2. `王小明` 購買 `21 堂組合包方案`
     -- 3. `好野人` 購買 `14 堂組合包方案`
+insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
+select 
+    (select id from "USER" where email = 'wXlTq@hexschooltest.io') as user_id,
+    id as credit_package_id,
+    credit_amount as purchased_credits,
+    price as price_paid
+from "CREDIT_PACKAGE"
+where name = '14 堂組合包方案';
+
+insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
+select 
+    (select id from "USER" where email = 'wXlTq@hexschooltest.io') as user_id,
+    id as credit_package_id,
+    credit_amount as purchased_credits,
+    price as price_paid
+from "CREDIT_PACKAGE"
+where name = '21 堂組合包方案';
+
+insert into "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, price_paid)
+select 
+    (select id from "USER" where email = 'richman@hexschooltest.io') as user_id,
+    id as credit_package_id,
+    credit_amount as purchased_credits,
+    price as price_paid
+from "CREDIT_PACKAGE"
+where name = '14 堂組合包方案';
 
 
 -- ████████  █████   █    ████   
