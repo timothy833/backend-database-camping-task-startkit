@@ -391,8 +391,8 @@ group by "CREDIT_PACKAGE".name;
 
 select sum (price_paid) as "總營收"
 from "CREDIT_PURCHASE" 
-where "CREDIT_PURCHASE".purchase_at >= '2024-11-01 00:00:00'
-and "CREDIT_PURCHASE".purchase_at  <= '2024-11-30 00:00:00';
+where purchase_at >= '2024-11-01 00:00:00'
+and purchase_at  <= '2024-11-30 00:00:00';
 
 
 -- 6-5. 查詢：計算 11 月份有預約課程的會員人數（需使用 Distinct，並用 created_at 和 status 欄位統計）
@@ -400,6 +400,6 @@ and "CREDIT_PURCHASE".purchase_at  <= '2024-11-30 00:00:00';
 
 select count(distinct "COURSE_BOOKING".user_id) as "預約會員人數"
 from "COURSE_BOOKING" 
-where "COURSE_BOOKING" .created_at >= '2024-11-01 00:00:00' 
-and "COURSE_BOOKING" .created_at <= '2024-11-30 00:00:00' 
-and "COURSE_BOOKING".status  != '課程已取消';
+where created_at >= '2024-11-01 00:00:00' 
+and created_at <= '2024-11-30 00:00:00' 
+and status  != '課程已取消';
